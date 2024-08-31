@@ -1,0 +1,5 @@
+An exception is an unexception event that occurs during program execution . it affects the flow of the program instruction which can cause the program to terminate abnormally.
+
+Java runtime exception-- A runtime execptions happens due to programming execptions
+
+Java IOException exceptions-- An IOException is also known as a checked exception. They are checked by the compliler at the comile-time and the programmer is promoted to handle these exception.
