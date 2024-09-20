@@ -1,5 +1,5 @@
 
-public class RunnableExample {  // Renamed the class to avoid conflict
+public class RunnableExample {
 
     public static void main(String[] args) {
         // Create instances of the Runnable classes
