@@ -5,16 +5,26 @@ public class compare {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String name = sc.nextLine();
+        String id = sc.nextLine();
 
-        if (name.equals("rachit")) {
-            System.out.println("hello");
-        }
-        if (name.equals("Walia")) {
-            System.out.print("hello");
-        } else {
-            System.out.println("bye");
-        }
+       try{
+        if(!id.contains("@")){
+            throw new Exception("Invalid");
+           }
+        
+        if(!id.contains(".")){
+            throw new Exception("Invalid");
+           }
+    
+        int atIndex = id.indexOf("@");
+        if(!id.indexOf(".",atIndex)==-1){
+            throw new Exception("Invalid");
+           }
+        System.out.println("Valid");
+       }catch(Exception e){
+        System.out.println(e.getMessage());
+       }    
+
 
     }
 }
