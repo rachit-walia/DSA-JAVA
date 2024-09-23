@@ -12,6 +12,5 @@ public class subString {
                 System.out.print(str.substring(i, j) + " ");
             }
         }
-
     }
 }
