@@ -9,8 +9,18 @@ public class ReverseWord {
             char ch = str.charAt(i);
             if (ch != ' ') {
                 sb.append(ch);
+            } else {
+                sb.reverse();
+                ans = ans + sb;
+                ans += " ";
+                sb.delete(0, sb.length());
+                // sb=new StringBuilder("");
             }
         }
+        // sb.append(" ");
+        sb.reverse();
+        ans += sb;
+        System.out.println(ans);
 
     }
 }

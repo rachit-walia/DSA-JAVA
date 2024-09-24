@@ -1,0 +1,79 @@
+A stream is sequencof data. In java a stream is composed of bytes.
+In java 3 stream are created for us automatically:
+1. System.out ;- standard output stream
+2. System.in : standard input stream
+3. system.err : standard error stream
+
+types of stream
+1. Byte stream: 
+    i. Input stream
+    ii. Output stream
+2. character stream
+    i.Reader
+    ii. Writer
+
+
+byte stream: java byte stream are used to perform input and output of 8 bits/ 1byte at a time from binary file
+
+InputStream and OutputStream class are most commonly used classes of byte stream
+
+Byte input stream:
+1. fileinput stream
+2. Sequence input stream
+3. piped input stream
+4. object input stream
+5. Byte array input stream
+6. StringBuffer input stream
+7. FilterinputStream--BufferinputStream, DataInputStream,PushBackInputStream
+
+1. FileInputStream: input stream that read from a file
+2. SequenceInputStream: input stream that is used to combine 2 or more input stream.
+3. PipedInputStream: Input stream used to read from a pipe
+4. ObjectInputStream: used to read an object from inout stream
+5. ByteInputStream: used to read a byte array from input stream
+6. StringBufferinputStream: used to read from a stringBuffer object.
+7. FilterInoutStream: an instance of this class contains some other input stream as a basic source of data for further manipulation.
+            There are 3 types of FilterinputStream
+
+i.BufferinputStream: provide buffer facility to the input stream.
+ii.DataInputStream: Use to read primitive data type from input stream
+iii.PushBackInputStream: provides unreading facilityto input stream.
+
+ways of using FileInputStream
+
+1. FileInputStream=new FileInputStream("c:/java/hello.txt");
+here directly path is specified while creating the FilterInoutStream
+
+2.File f=new file("c:/java/hello.txt");
+FileInputStream fin;
+fin=new FileInputStream(f);
+
+
+
+        // Output stream 
+the output stream will only create a file if doesnt already exisr, before opening it for output.
+
+
+OutputStream :
+1.FileoutputStream
+2.FilterOutputStream-- BufferedOutputStream, DataOutputStream, PrintStream
+3. ByteOutputStream
+4. StringBufferOutputStream
+5.PipedOutputStream
+
+
+FileoutputStream: used to write data into a file
+PipedOutputStream: used to write data to a pipe
+ObjectOutputStream: used to write object to a output stream
+ByteArrayOutputStream: used to write data to a byte array.
+FilterOutputStream: i. BufferedOutputStream- provide buffer facility to output stream.
+                    ii. bufferOutputStream: used to write primitive data to output stream
+                    iii. Printstream: used to print any data on output stream
+
+FileoutputStream is used to create file and write data into it.
+
+Ways to using file with FileOutputStream:
+1. FileoutputStream fout=new fileoutputstream("c:/java/hello.txt");
+2. File f = new File("c:/java/hello.txt");
+FileoutputStream fout;
+fout=new fileoutputstream(f);

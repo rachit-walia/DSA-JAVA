@@ -1,0 +1,60 @@
+Character stream
+
+Introduction: a stream is a sequence of data. In java a stream is composed of bytes
+
+character stream are used to perform input and output of 16 bits/ 2bytes at a time from character file.
+
+Reader and writer are most common classes of character stream
+
+charcter stream reader class
+
+Reader: InputStreamReader--> filereader
+        BufferedReader   --> LineNumberReader
+        FilterReader     --> pushBackReader
+        StringReader
+        PipedReader
+
+reader class: with the character based streams we can read pf text. A line of text . A line of carrier return and linefeed
+
+i.FileReader: used to read from files. it extends InputStreamReader class that translate byte to character
+ii. BufferReader: provides buffer facility to the reader class
+iii. lineNumberReader: this class extends bufferReader and also keeps record of line number of these buffered streams
+iv. StringReader: used to read from a string.
+v. pushBackReader: provides unreading facility to reader class
+vi PipedReader: used to read from the pipe
+
+
+
+writer class: abstract class that define character stream output. if you need to change these values , you can use the output/streamWriter
+
+types of writer class:
+
+i.Filewriter: used to write from files. it extends outputStreamReader class that translate byte to character
+
+ii. Buffewriterr: provides buffer facility to the writer class
+
+iii:piper writer: used tp write data to a pipe
+
+iv PrintWriter: used to print any writer data to a pipe
+
+v.filterWriterclass: it is an abstract class which is used to write filtered charcater streams.
+
+
+Creating FileReader and Filewriter
+
+FileReader:
+
+FileReader fr=new fileReader("c:/java/hello.txt");
+// file path is specifies in arguments
+
+File f=new File("c://java/hello.txt");
+fileReader fr=new filereader(f);
+
+FileWriter:
+
+java FileWriter class is used to write charcater data to the file
+there are two ways to create fileWriter object:
+FileWriter fw=new FileWriter("c:/java/hello.txt");
+
+File f=new File("c://java/hello.txt");
+FileWriter fw fr=new FileWriter(f);
