@@ -2,7 +2,7 @@ Character stream
 
 Introduction: a stream is a sequence of data. In java a stream is composed of bytes
 
-character stream are used to perform input and output of 16 bits/ 2bytes at a time from character file.
+character stream are used to perform input and output of 16 bits/ 2bywtes at a time from character file.
 
 Reader and writer are most common classes of character stream
 

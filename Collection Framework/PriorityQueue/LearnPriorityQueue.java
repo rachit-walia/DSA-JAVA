@@ -5,7 +5,7 @@ public class LearnPriorityQueue {
 
     public static void main(String[] args) {
         Queue<Integer> pq = new PriorityQueue<>();
-        pq.add(30);
+        pq.add(300);
         pq.add(40);
         pq.add(50);
         pq.add(60);
