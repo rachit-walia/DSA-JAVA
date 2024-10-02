@@ -1,0 +1,11 @@
+When a funtion calls itself until a special condition is meet
+
+variables 1. arguments
+          2. Return type
+          3. body of function
+
+Types of reccurence relation
+
+1. Linear reccurence relation -- fibonacci 
+2. Divide and concure relation -- Binary 
+
