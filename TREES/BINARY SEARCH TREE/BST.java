@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class BST {
 
@@ -50,22 +51,6 @@ public class BST {
         }
     }
 
-    public void populateSorted(int[] nums) {
-        populateSorted(nums, 0, nums.length); // Fixed method name
-    }
-
-    private void populateSorted(int[] nums, int start, int end) {
-        if (start >= end) {
-            return;
-        }
-
-        int mid = (start + end) / 2;
-
-        this.insert(nums[mid]);
-        populateSorted(nums, start, mid);
-        populateSorted(nums, mid + 1, end);
-    }
-
     public void display() {
         display(this.root, "Root Node: ");
     }
@@ -79,10 +64,6 @@ public class BST {
         display(node.right, "Right child of " + node.value + " : ");
     }
 
-    public boolean isEmpty() {
-        return root == null;
-    }
-
     public int height(Node node) {
         if (node == null) {
             return -1;
@@ -90,39 +71,44 @@ public class BST {
         return node.height;
     }
 
-    public boolean balanced() {
-        return balanced(root);
+    public boolean isBST() {
+        return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    private boolean balanced(Node node) {
+    // Validate if the tree is a Binary Search Tree
+    private boolean isBST(Node node, int min, int max) {
         if (node == null) {
             return true;
         }
-        return Math.abs(height(node.left) - height(node.right)) <= 1 && balanced(node.left) && balanced(node.right);
+
+        if (node.value <= min || node.value >= max) {
+            return false;
+        }
+
+        return isBST(node.left, min, node.value) && isBST(node.right, node.value, max);
     }
 
-    // Main method to test the BST functionality
     public static void main(String[] args) {
         BST bst = new BST();
+        Scanner sc = new Scanner(System.in);
 
-        // Test inserting and displaying nodes
-        int[] numbers = {50, 30, 70, 20, 40, 60, 80};
-        bst.populate(numbers);
+        // Take input from user
+        System.out.println("Enter the number of elements to insert in the BST: ");
+        int n = sc.nextInt();
 
+        System.out.println("Enter the elements to insert in the BST:");
+        for (int i = 0; i < n; i++) {
+            int value = sc.nextInt();
+            bst.insert(value);
+        }
+
+        // Display the tree
         System.out.println("Displaying BST:");
         bst.display();
 
-        // Check if the tree is balanced
-        System.out.println("Is the BST balanced? " + bst.balanced());
+        // Check if the tree is a valid BST
+        System.out.println("Is the tree a valid BST? " + bst.isBST());
 
-        // Test inserting a sorted array and check balance again
-        System.out.println("\nInserting sorted array:");
-        int[] sortedNumbers = {10, 20, 30, 40, 50, 60, 70};
-        bst.populateSorted(sortedNumbers);
-
-        System.out.println("Displaying BST after inserting sorted array:");
-        bst.display();
-
-        System.out.println("Is the BST balanced? " + bst.balanced());
+        sc.close();
     }
 }
