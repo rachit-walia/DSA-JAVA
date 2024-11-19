@@ -1,5 +1,5 @@
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class UndirectedGraphCycleDetection {
 
@@ -8,11 +8,11 @@ public class UndirectedGraphCycleDetection {
         Graph graph = new Graph(V);
 
         // Add edges to the graph
-        graph.addEdge(1, 2);
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
         graph.addEdge(1, 3);
         graph.addEdge(2, 4);
-        graph.addEdge(3, 5);
-        graph.addEdge(5, 2); // Adding a cycle
+        graph.addEdge(4, 1); // Adding a cycle
 
         if (graph.hasCycle()) {
             System.out.println("Cycle detected in the graph");
@@ -24,32 +24,28 @@ public class UndirectedGraphCycleDetection {
 
 class Graph {
 
-    int V; // Number of vertices
-    List<Integer>[] adjList; // Adjacency list
+    private int V; // Number of vertices
+    private ArrayList<ArrayList<Integer>> adj; // Adjacency list
 
-    // Constructor
-    Graph(int V) {
+    public Graph(int V) {
         this.V = V;
-        adjList = new ArrayList[V + 1];
-        for (int i = 0; i <= V; i++) {
-            adjList[i] = new ArrayList<>();
+        adj = new ArrayList<>();
+        for (int i = 0; i < V; i++) {
+            adj.add(new ArrayList<>());
         }
     }
 
-    // Add an edge to the graph
-    void addEdge(int u, int v) {
-        adjList[u].add(v);
-        adjList[v].add(u); // Undirected graph
+    public void addEdge(int u, int v) {
+        adj.get(u).add(v);
+        adj.get(v).add(u); // Since the graph is undirected
     }
 
-    // Check for cycles in the graph
-    boolean hasCycle() {
-        boolean[] visited = new boolean[V + 1]; // Track visited nodes
-
-        // Check for cycles in all disconnected components
-        for (int i = 1; i <= V; i++) {
+    public boolean hasCycle() {
+        boolean[] visited = new boolean[V];
+        // Check for a cycle in each connected component
+        for (int i = 0; i < V; i++) {
             if (!visited[i]) {
-                if (bfsCycleCheck(i, visited)) {
+                if (dfs(i, -1, visited)) {
                     return true;
                 }
             }
@@ -57,27 +53,19 @@ class Graph {
         return false;
     }
 
-    // BFS to detect cycles
-    boolean bfsCycleCheck(int start, boolean[] visited) {
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{start, -1}); // {current node, parent node}
-        visited[start] = true;
-
-        while (!queue.isEmpty()) {
-            int[] pair = queue.poll();
-            int node = pair[0];
-            int parent = pair[1];
-
-            for (int neighbor : adjList[node]) {
-                if (!visited[neighbor]) {
-                    visited[neighbor] = true;
-                    queue.add(new int[]{neighbor, node});
-                } else if (neighbor != parent) {
-                    // If visited and not the parent, cycle detected
+    private boolean dfs(int v, int parent, boolean[] visited) {
+        visited[v] = true;
+        for (int i = 0; i < adj.get(v).size(); i++) {
+            int neighbor = adj.get(v).get(i);
+            if (!visited[neighbor]) {
+                if (dfs(neighbor, v, visited)) {
                     return true;
                 }
+            } else if (neighbor != parent) {
+                // If the neighbor is visited and is not the parent, it's a cycle
+                return true;
             }
         }
-        return false; // No cycle detected
+        return false;
     }
 }
