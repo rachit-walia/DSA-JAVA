@@ -5,3 +5,8 @@ Ques---
 3. find minimum number of edges in path
 4. find path in directed graph
 
+20th nov--
+---> Shortest path algorithm (Single and multi Source)
+1. Dijkstras
+2. Bellman ford
+3. Flloyd warshal
