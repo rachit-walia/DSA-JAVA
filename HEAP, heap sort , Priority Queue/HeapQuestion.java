@@ -1,11 +1,11 @@
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class HeapQuestion<T extends Comparable<T>> {
 
     private ArrayList<T> list;
 
-    // Correct constructor name
+    // Constructor
     public HeapQuestion() {
         list = new ArrayList<>();
     }
@@ -81,7 +81,7 @@ public class HeapQuestion<T extends Comparable<T>> {
 
     public static void main(String[] args) {
         try {
-            Heap<Integer> heap = new Heap<>();
+            HeapQuestion<Integer> heap = new HeapQuestion<>();
             heap.insert(10);
             heap.insert(5);
             heap.insert(20);
