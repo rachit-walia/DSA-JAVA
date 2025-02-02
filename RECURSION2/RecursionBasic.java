@@ -46,6 +46,38 @@ public class RecursionBasic {
         return isSorted(arr, i + 1);
     }
 
+    public static int firstOccurence(int arr[], int key, int i) {
+        if (i == arr.length) {
+            return -1;
+        }
+        if (arr[i] == key) {
+            return i;
+        }
+        return firstOccurence(arr, key, i + 1);
+    }
+
+    public static int lastOccurence(int arr[], int key, int i) {
+        // Base case: if i reaches the end of the array, return -1
+        if (i == arr.length) {
+            return -1;
+        }
+
+        // Recursive call to check the rest of the array
+        int isFound = lastOccurence(arr, key, i + 1);
+
+        // If key is found in the future part of the array, return that index
+        if (isFound != -1) {
+            return isFound;
+        }
+
+        // If the current element matches the key, return the current index
+        if (arr[i] == key) {
+            return i;
+        }
+
+        return -1; // If the key is not found
+    }
+
     public static void main(String[] args) {
         int n = 3;
         // printInc(n);
@@ -53,8 +85,10 @@ public class RecursionBasic {
         int b = sum(n);
         // System.out.println(a);
         // System.out.println(b);
-        int arr[] = {1, 2, 3, 4, 6, 3};
+        int arr[] = {1, 2, 7, 4, 6, 3};
         System.out.println(isSorted(arr, 0));
+        System.out.println(firstOccurence(arr, 3, 1));
+        System.out.println(lastOccurence(arr, 1, 0));
 
     }
 }
