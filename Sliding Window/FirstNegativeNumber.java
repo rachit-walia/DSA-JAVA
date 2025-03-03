@@ -6,7 +6,6 @@ public class FirstNegativeNumber {
 
     public static void firstNegativeNumberInWindow(int[] arr, int n, int k) {
         Queue<Integer> queue = new LinkedList<>();
-
         // Process the first window
         for (int i = 0; i < k; i++) {
             if (arr[i] < 0) {
