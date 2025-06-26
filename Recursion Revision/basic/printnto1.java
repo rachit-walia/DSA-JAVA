@@ -3,7 +3,8 @@ public class printnto1 {
 
     public static void main(String[] args) {
         // fun(5);
-        funRev(5);
+        // funRev(5);
+        funBoth(5);
     }
 
     static void fun(int n) {
@@ -19,6 +20,16 @@ public class printnto1 {
             return;
         }
         funRev(n - 1);
+        System.out.println(n);
+    }
+
+    static void funBoth(int n) {
+        if (n == 0) {
+            return;
+        }
+
+        System.out.println(n);
+        funBoth(n - 1);
         System.out.println(n);
     }
 }
