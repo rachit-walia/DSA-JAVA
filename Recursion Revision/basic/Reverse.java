@@ -12,9 +12,12 @@ public class Reverse {
         rev1(n / 10);
     }
 
+    // static void rev2{
+    // }
     public static void main(String[] args) {
         int n = 1234;
         rev1(n);
         System.out.println(sum);
     }
+
 }
